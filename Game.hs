@@ -8,5 +8,8 @@ loop :: Tree t -> IO()
 loop Null  = putStrLn "Sala Vazia"
 loop (Node x esq dir) = do {
       putStrLn x;
-      loop (esq);
+
+      opcao <- getLine;
+      case opcao of "1" -> loop(esq);
+			"2" -> loop(dir);
 }
