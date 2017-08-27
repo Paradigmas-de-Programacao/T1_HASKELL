@@ -7,12 +7,10 @@ import Control.Monad
 walk :: Tree t -> IO()
 walk Null  = putStrLn "Sala Vazia!"
 walk (Node x left right) = do {
-
 	putStrLn x;
 
 	option <- getLine;
 	case option of
-	"Back" ->
-	"Left" -> walk(left);
-	"Right" -> walk(right);
+	"1" -> walk(left);
+	"2" -> walk(right);
 }
