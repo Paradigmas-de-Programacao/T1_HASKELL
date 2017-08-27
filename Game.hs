@@ -1,15 +1,18 @@
-module Game(loop) where
+module Game(walk) where
 
 import Tree(Tree(Null,Node))
 import System.IO
 import Control.Monad
 
-loop :: Tree t -> IO()
-loop Null  = putStrLn "Sala Vazia"
-loop (Node x esq dir) = do {
-      putStrLn x;
+walk :: Tree t -> IO()
+walk Null  = putStrLn "Sala Vazia!"
+walk (Node x left right) = do {
 
-      opcao <- getLine;
-      case opcao of "1" -> loop(esq);
-			"2" -> loop(dir);
+	putStrLn x;
+
+	option <- getLine;
+	case option of
+	"Back" ->
+	"Left" -> walk(left);
+	"Right" -> walk(right);
 }
