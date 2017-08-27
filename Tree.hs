@@ -1,20 +1,16 @@
-module Tree(Tree(Null,Node)) where
+module Tree(Tree(Null,Node), Marker(LeftMarker,RightMarker), goLeft, goRight) where
 
-data Tree t = Null | Node [Char] (Tree t) (Tree t) deriving (Show)
+data Tree t = Null | Node t (Tree t) (Tree t) deriving (Show)
+data Marker t = LeftMarker t (Tree t) | RightMarker t (Tree t) deriving (Show)
 
--- data Direction = L | R deriving (Show)
--- type Directions = [Direction]
+type DirectionMarker t = [Marker t]
 
-data Crumb t = LeftCrumb t (Tree t) | RightCrumb t (Tree t) deriving (Show)
+goLeft :: (Tree t, DirectionMarker t) -> (Tree t, DirectionMarker t)
+goLeft (Node x l r, bs) = (l, LeftMarker x r:bs)
 
-type Breadcrumbs t = [Crumb t]
+goRight :: (Tree t, DirectionMarker t) -> (Tree t, DirectionMarker t)
+goRight (Node x l r, bs) = (r, RightMarker x l:bs)
 
-goLeft :: (Tree t, Breadcrumbs t) -> (Tree t, Breadcrumbs t)
-goLeft (Node x l r, bs) = (l, LeftCrumb x r:bs)
-
-goRight :: (Tree t, Breadcrumbs t) -> (Tree t, Breadcrumbs t)
-goRight (Node x l r, bs) = (r, RightCrumb x l:bs)
-
-goUp :: (Tree t, Breadcrumbs t) -> (Tree t, Breadcrumbs t)
-goUp (t, LeftCrumb x r:bs) = (Node x t r, bs)
-goUp (t, RightCrumb x l:bs) = (Node x t l, bs)
+goBack :: (Tree t, DirectionMarker t) -> (Tree t, DirectionMarker t)
+goBack (t, LeftMarker x r:bs) = (Node x t r, bs)
+goBack (t, RightMarker x l:bs) = (Node x t l, bs)
