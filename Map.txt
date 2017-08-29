@@ -1,3 +1,3 @@
-Sala 1 - Vim para esquerda
-Sala Primaria
-Sala 2 - Vim para direita
+Sala do Barbaro Esquerda
+Sala do Barbaro Primaria
+Sala do Barbaro Esquerda
