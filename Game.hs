@@ -1,21 +1,25 @@
 module Game(walk) where
 
-import Tree(Tree(Null,Node),
-            Marker(LeftMarker,RightMarker),
-            goLeft,
-            goRight,
-            )
+import Tree(Tree(Null,Node), buildTree)
 import System.IO
+import System.Process
 import Control.Monad
 
-walk :: Tree t-> Marker a -> IO()
-walk Null  = putStrLn "Sala Vazia!"
-walk (Node x left right, [a]) = do {
+clear = system "clear"
 
-  putStrLn x;
+walk :: (Eq element, Show element) => Tree element -> IO()
+walk (Node element Null Null) = do
+  clear
+  print element
+  putStrLn "Não há passagens adiante. Fim da linha."
 
-	option <- getLine;
-	case option of
-	"1" -> walk(goLeft(left, [LeftMarker t]));
-	"2" -> walk(goRight( right, [RightMarker t]));
-}
+walk (Node element left right) = do
+  clear
+  print element
+  putStrLn "O que deseja fazer ?"
+  path <- readLn
+  if ((path == 1) && (left /= Null)) then
+    (walk(left))
+    else if ((path == 2) && (right /= Null)) then
+      (walk(right))
+      else walk(Node element left right)

@@ -1,16 +1,15 @@
-module Tree(Tree(Null,Node), Marker(LeftMarker,RightMarker), goLeft, goRight) where
+module Tree(Tree(Null,Node),buildTree) where
 
-data Tree t = Null | Node t (Tree t) (Tree t) deriving (Show)
-data Marker t = LeftMarker t (Tree t) | RightMarker t (Tree t) deriving (Show)
+import System.Process
 
-type DirectionMarker t = [Marker t]
+data Tree t = Null
+      | Node t (Tree t) (Tree t)
+      deriving (Show, Eq)
 
-goLeft :: (Tree t, DirectionMarker t) -> (Tree t, DirectionMarker t)
-goLeft (Node x l r, bs) = (l, LeftMarker x r:bs)
+buildTree :: [element] -> Tree.Tree element
+buildTree [] = Null
 
-goRight :: (Tree t, DirectionMarker t) -> (Tree t, DirectionMarker t)
-goRight (Node x l r, bs) = (r, RightMarker x l:bs)
-
-goBack :: (Tree t, DirectionMarker t) -> (Tree t, DirectionMarker t)
-goBack (t, LeftMarker x r:bs) = (Node x t r, bs)
-goBack (t, RightMarker x l:bs) = (Node x t l, bs)
+buildTree list = (Node (list !! half)
+                  (buildTree $ take half list)
+                  (buildTree $ drop (half+1) list))
+                  where half = length list `quot` 2
