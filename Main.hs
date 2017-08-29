@@ -5,18 +5,20 @@ import Game
 import System.Process
 import System.IO
 import Data.Char
+import Control.Monad
 
 clear = system "clear"
-file_barb = "Map.txt"
-file_arc = "Map2.txt"
-file_hunt = "Map3.txt"
+file_barb = "map_barb.txt"
+file_arc = "map_arc.txt"
+file_hunt = "map_hunt.txt"
 play_again = "Deseja jogar novamente ? (1- SIM\n2-NAO\n)"
 goodbye = "Ate a proxima, aventureiro !"
 
 menu :: IO()
 menu = do
+  clear
   putStrLn "===================================================";
-  putStrLn "Bem-Vindo Viajante, ao Diablo 3 - Haskell Version !\n Antes de começarmos a aventura, precisamos de uma informação importante:\n";
+  putStrLn "Bem-Vindo Viajante, ao RPG - Haskell!\n Antes de começarmos a aventura, precisamos de uma informação importante:\n";
   putStrLn "Com qual classe deseja jogar ?\n 1 - Bárbaro\n 2 - Arcanista\n 3 - Caçador de Demônios ";
   option <- getLine;
   case option of
@@ -26,8 +28,7 @@ menu = do
 
 main_barb = do
   clear
-  history <- fmap Text.lines (Text.readFile file_barb)
-
+  history <- fmap lines (readFile file_barb)
   let rpgMaps = buildTree history
   walk rpgMaps
   putStrLn play_again

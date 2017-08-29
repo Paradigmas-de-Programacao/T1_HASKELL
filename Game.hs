@@ -4,6 +4,7 @@ import Tree(Tree(Null,Node), buildTree)
 import System.IO
 import System.Process
 import Control.Monad
+import Data.String
 
 clear = system "clear"
 

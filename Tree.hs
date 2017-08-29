@@ -4,7 +4,7 @@ import System.Process
 
 data Tree t = Null
       | Node t (Tree t) (Tree t)
-      deriving (Show, Eq)
+      deriving (Show, Eq, Ord)
 
 buildTree :: [element] -> Tree.Tree element
 buildTree [] = Null
