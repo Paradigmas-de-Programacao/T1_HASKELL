@@ -1,7 +1,5 @@
 Sala Esq - Esq
 Sala Esq
 Sala Esq - Dir
-Atormentado pelo seu passado, onde sua vila foi destruida em uma piscar de olhos por uma abominavel criatura, voce decidiu passar a vida treinando para o momento onde iria obter sua vinganca. 19 anos se passaram,e voce se encontra na taverna do Minotauro Caolho, no pequeno vilarejo de Morgon. A taverna esta cheia de viajantes bebados e barulhentos, que cantam ao redor das mesas enquanto soltam piadas para as genasis garconetes que soltam risadinhas sem graca. Enquanto se distrai com a bagunca, o minotauro responsavel pelo bar coloca uma caneca enorme de cerveja na sua frente. Voce pode (1)Beber a cerveja ou (2)Perguntar sobre um lugar para dormir.
-Sala Dir - Esq
+Atormentado pelo seu passado, onde sua vila foi destruida em uma piscar de olhos por uma abominavel criatura, voce decidiu passar a vida treinando para o momento onde iria obter sua vingança. 19 anos se passaram,e voce se encontra na taverna do Minotauro Caolho, no pequeno vilarejo de Morgon. A taverna esta cheia de viajantes bebados e barulhentos, que cantam ao redor das mesas enquanto soltam piadas para as genasis garçonetes que soltam risadinhas sem graça. Enquanto se distrai com a bagunça, o minotauro responsavel pelo bar coloca uma caneca enorme de cerveja na sua frente. Voce pode (1)Beber a cerveja ou (2)Perguntar sobre um lugar para dormir.
 Sala Dir
-Sala Dir - Dir

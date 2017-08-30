@@ -12,6 +12,7 @@ walk :: (Eq element, Show element) => Tree element -> IO()
 walk (Node element Null Null) = do
   clear
   print element
+  -- action element
   putStrLn "Não há passagens adiante. Fim da linha."
 
 walk (Node element left right) = do
@@ -24,3 +25,8 @@ walk (Node element left right) = do
     else if ((path == 2) && (right /= Null)) then
       (walk(right))
       else walk(Node element left right)
+
+action (Node element _ _) = do
+  if(element == "T") then
+    print "Texto"
+  else print "Batalha"
