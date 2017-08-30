@@ -1,12 +1,13 @@
 module Tree(Tree(Null,Node),buildTree) where
 
+import Room
 import System.Process
 
-data Tree t = Null
-      | Node t (Tree t) (Tree t)
+data Tree = Null
+      | Node Room (Tree) (Tree)
       deriving (Show, Eq, Ord)
 
-buildTree :: [element] -> Tree.Tree element
+buildTree :: [Room] -> Tree.Tree
 buildTree [] = Null
 
 buildTree list = (Node (list !! half)
