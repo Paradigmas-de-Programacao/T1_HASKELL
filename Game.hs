@@ -9,14 +9,13 @@ import Data.String
 
 clear = system "clear"
 
-walk :: Tree.Tree -> IO()
-walk (Node element Null Null) = do
+decision_room :: Tree.Tree -> IO()
+decision_room (Node element Null Null) = do
   clear
-  print element
-  -- action element
+  putStrLn (desc element)
   putStrLn "Fim da linha."
 
-walk (Node element left right) = do
+decision_room (Node element left right) = do
   clear
   putStrLn (desc element)
   putStrLn "O que deseja fazer ?"
@@ -27,15 +26,17 @@ walk (Node element left right) = do
       (walk(right))
       else walk(Node element left right)
 
-fight (Node element left right) = do
+-- All battle rooms must have two fix possibilities:
+-- Victory are left Room and Loses are right Room
+fight_room (Node element left right) = do
   putStrLn "Lute !"
+  path <- readLn
+  if(path == 1) then
+    (walk (left))
+    else (walk(right))
 
-play :: Tree.Tree -> IO()
-play (Node element left right) = do
+walk :: Tree.Tree -> IO()
+walk (Node element left right) = do
   if (style (element) == "Batalha") then
-    fight (Node element left right)
-    else walk(Node element left right)
--- action (Node element _ _) = do
-  -- if(element == "T") then
-    -- print "Texto"
-  -- else print "Batalha"
+    fight_room (Node element left right)
+    else decision_room(Node element left right)
