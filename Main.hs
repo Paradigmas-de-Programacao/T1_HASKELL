@@ -8,7 +8,8 @@ import Data.Char
 import Control.Monad
 
 clear = system "clear"
-file_barb = "map_barb.txt"
+file_barb_txts = "map_barb.txt"
+file_barb_styles = "map_rooms_barb.txt"
 file_arc = "map_arc.txt"
 file_hunt = "map_hunt.txt"
 play_again = "Deseja jogar novamente ? (1- SIM\n2-NAO\n)"
@@ -28,28 +29,9 @@ menu = do
 
 main_barb = do
   clear
-  history <- fmap lines (readFile file_barb)
-  let rpgMaps = buildTree history
-  walk rpgMaps
-  putStrLn play_again
-  playAgain <- readLn
-  if (playAgain == 1) then (menu) else putStrLn goodbye
-
-main_arc = do
-  clear
-  history <- fmap Text.lines (Text.readFile file_arc)
-
-  let rpgMaps = buildTree history
-  walk rpgMaps
-  putStrLn play_again
-  playAgain <- readLn
-  if (playAgain == 1) then (menu) else putStrLn goodbye
-
-main_hunt = do
-  clear
-  history <- fmap Text.lines (Text.readFile file_hunt)
-
-  let rpgMaps = buildTree history
+  styles <- fmap lines(readFile file_barb_styles)
+  txts <- fmap lines (readFile file_barb_txts)
+  let rpgMaps = buildTree create_Rooms_list (styles)(txts)
   walk rpgMaps
   putStrLn play_again
   playAgain <- readLn
