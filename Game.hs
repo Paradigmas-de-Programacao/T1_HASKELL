@@ -8,7 +8,7 @@ import Data.String
 
 clear = system "clear"
 
-walk :: (Eq element, Show element) => Tree element -> IO()
+walk :: Tree.Tree -> IO()
 walk (Node element Null Null) = do
   clear
   print element
@@ -26,7 +26,7 @@ walk (Node element left right) = do
       (walk(right))
       else walk(Node element left right)
 
-action (Node element _ _) = do
-  if(element == "T") then
-    print "Texto"
-  else print "Batalha"
+-- action (Node element _ _) = do
+  -- if(element == "T") then
+    -- print "Texto"
+  -- else print "Batalha"

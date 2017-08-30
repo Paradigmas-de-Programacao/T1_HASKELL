@@ -2,6 +2,7 @@ import qualified Data.Text as Text
 import qualified Data.Text.IO as Text
 import Tree(Tree(Null,Node), buildTree)
 import Game
+import Room
 import System.Process
 import System.IO
 import Data.Char
@@ -24,14 +25,14 @@ menu = do
   option <- getLine;
   case option of
     "1" -> main_barb
-    "2" -> main_arc
-    "3" -> main_hunt
+    -- "2" -> main_arc
+    -- "3" -> main_hunt
 
 main_barb = do
   clear
   styles <- fmap lines(readFile file_barb_styles)
   txts <- fmap lines (readFile file_barb_txts)
-  let rpgMaps = buildTree create_Rooms_list (styles)(txts)
+  let rpgMaps = buildTree (create_Rooms_list styles txts [])
   walk rpgMaps
   putStrLn play_again
   playAgain <- readLn
