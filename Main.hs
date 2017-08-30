@@ -21,7 +21,7 @@ menu = do
   clear
   putStrLn "===================================================";
   putStrLn "Bem-Vindo Viajante, ao RPG - Haskell!\n Antes de começarmos a aventura, precisamos de uma informação importante:\n";
-  putStrLn "Com qual classe deseja jogar ?\n 1 - Bárbaro\n 2 - Arcanista\n 3 - Caçador de Demônios ";
+  putStrLn "Com qual classe deseja jogar ?\n 1 - Bárbaro";
   option <- getLine;
   case option of
     "1" -> main_barb

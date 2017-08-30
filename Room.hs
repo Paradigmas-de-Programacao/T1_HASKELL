@@ -1,4 +1,4 @@
-module Room(Room(Room), create_Rooms_list) where
+module Room(Room(Room), create_Rooms_list, style, desc) where
 
 import System.Process
 import System.IO
