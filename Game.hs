@@ -2,10 +2,11 @@ module Game(walk) where
 
 import Tree(Tree(Null,Node), buildTree)
 import System.IO
-import Room
+import System.Random(randomRIO)
 import System.Process
 import Control.Monad
 import Data.String
+import Room
 
 clear = system "clear"
 
@@ -40,3 +41,11 @@ walk (Node element left right) = do
   if (style (element) == "Batalha") then
     fight_room (Node element left right)
     else decision_room(Node element left right)
+
+--Generates de ATK type where 1 = Power atack, 2 = Technical ATK and 3 = Speed ATK
+randomATK :: Int -> IO(Int)
+randomATK 0 = return 0
+randomATK n  = do
+  r <- randomRIO (1,3)
+--rs <- randomATK(n-1)
+  return (r)
