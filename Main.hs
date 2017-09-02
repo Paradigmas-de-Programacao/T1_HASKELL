@@ -54,7 +54,7 @@ main_barb = do
 
   let monsters = create_monsters_list mobs_name mobs_dmg mobs_hp mobs_armor []
   let rpgMaps = buildTree (create_Rooms_list styles txts monsters [])
-  walk rpgMaps
+  walk rpgMaps 1
   putStrLn play_again
   playAgain <- readLn
   if (playAgain == 1) then (menu) else putStrLn goodbye
@@ -71,7 +71,7 @@ main_arc = do
   txts <- fmap lines (readFile file_arc_txts)
   let monsters = create_monsters_list mobs_name mobs_dmg mobs_hp mobs_armor []
   let rpgMaps = buildTree (create_Rooms_list styles txts monsters [])
-  walk rpgMaps
+  walk rpgMaps 2
   putStrLn play_again
   playAgain <- readLn
   if (playAgain == 1) then (menu) else putStrLn goodbye
@@ -88,7 +88,7 @@ main_hunt = do
   txts <- fmap lines (readFile file_hunt_txts)
   let monsters = create_monsters_list mobs_name mobs_dmg mobs_hp mobs_armor []
   let rpgMaps = buildTree (create_Rooms_list styles txts monsters [])
-  walk rpgMaps
+  walk rpgMaps 3
   putStrLn play_again
   playAgain <- readLn
   if (playAgain == 1) then (menu) else putStrLn goodbye

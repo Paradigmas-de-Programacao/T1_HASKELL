@@ -13,33 +13,35 @@ import Battle
 
 clear = system "clear"
 
-decision_room :: Tree.Tree -> IO()
-decision_room (Node element Null Null) = do
+decision_room :: Tree.Tree -> Integer -> IO()
+decision_room (Node element Null Null) classe = do
   clear
   putStrLn (desc element)
   putStrLn "Fim da linha."
 
-decision_room (Node element left right) = do
+decision_room (Node element left right) classe = do
   clear
   putStrLn (desc element)
   putStrLn "O que deseja fazer ?"
   path <- readLn
   if ((path == 1) && (left /= Null)) then
-    (walk(left))
+    (walk left classe)
     else if ((path == 2) && (right /= Null)) then
-      (walk(right))
-      else walk(Node element left right)
+      (walk right classe)
+      else walk(Node element left right) classe
 
 -- All battle rooms must have two fix possibilities:
 -- Victory are left Room and Loses are right Room
-fight_room (Node element left right) = do
-  path <- readLn
-  if(path == 1) then
-    (walk (left))
-    else (walk(right))
+fight_room (Node element left right) classe = do
+  clear
+  if(classe == 1) then
+    fight 150 (Player 500 150 50) (hp(monster element)) (monster element)
+    else if(classe == 2) then
+      fight 400 (Player 400 200 30) (hp(monster element)) (monster element)
+      else fight 400 (Player 400 200 40) (hp(monster element)) (monster element)
 
-walk :: Tree.Tree -> IO()
-walk (Node element left right) = do
+walk :: Tree.Tree -> Integer -> IO()
+walk (Node element left right) classe = do
   if (style (element) == "Batalha") then
-    fight_room (Node element left right)
-    else decision_room(Node element left right)
+    fight_room (Node element left right) classe
+    else decision_room(Node element left right) classe
