@@ -13,7 +13,6 @@ import Monster
 randomATK :: IO Integer
 randomATK = do
   r <- randomRIO (1,3)
---rs <- randomATK(n-1)
   return (r)
 
 -- 1 wins 2 ,2 wins 3, 3 wins 1
@@ -22,19 +21,20 @@ compareAttack :: Integer -> Integer -> Integer -> Player -> Integer -> Monster -
 compareAttack op_player op_monster hp_player player hp_monster monster = do
   if (op_player < op_monster) then
     detWinner (player_damaged monster player hp_player) player hp_monster monster
-    -- putStrLn "Monstro acertou!"
     else if(op_player > op_monster) then
       detWinner hp_player player (monster_damaged monster player hp_monster) monster
-      -- putStrLn "Player acertou!"
       else fight hp_player player hp_monster monster
-      -- else putStrLn "Empate"
 
 -- HP Player, Player, HP Monster, Monster
 fight :: Integer -> Player -> Integer -> Monster -> IO()
 fight hp_player player hp_monster monster = do
-  putStrLn "Player HP: \t\t\tMonster HP: "
+  putStrLn "============================="
+  putStr "Player HP: "
   print hp_player
-  putStrLn "Escolha seu ataque !\n"
+  putStr "Monster HP: "
+  print hp_monster
+  putStrLn "Escolha seu ataque !\n1 - Power Attack(Axe)\n2 - Technical Attack(Sword)\n3 - Speed Attack(Rapier)"
+  putStrLn "============================="
   xs<-randomATK
   attack <- readLn
   compareAttack attack xs hp_player player hp_monster monster
