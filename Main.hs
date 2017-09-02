@@ -25,13 +25,23 @@ file_arc_styles = "Maps/map_rooms_arc.txt"
 
 file_hunt_txts = "Maps/map_hunt.txt"
 file_hunt_styles = "Maps/map_rooms_hunt.txt"
+
 --Menu
+file_title = "Mobs_imgs/title.txt"
 play_again = "Deseja jogar novamente ? (1- SIM\n2-NAO\n)"
 goodbye = "Ate a proxima, aventureiro !"
+
+renderTitle :: IO()
+renderTitle = do
+  handle <- openFile file_title ReadMode
+  contents <- hGetContents handle
+  putStr contents
+  hClose handle
 
 menu :: IO()
 menu = do
   clear
+  renderTitle
   putStrLn "===================================================\n";
   putStrLn "Bem-Vindo Viajante, ao RPG - Haskell!\nAntes de começarmos a aventura, precisamos de uma informação importante:\n";
   putStrLn "===================================================\n";
