@@ -1,4 +1,4 @@
-module Monster(Monster(Monster), create_monsters_list) where
+module Monster(Monster(Monster), create_monsters_list, name, dmg, hp, armor) where
 
 data Monster = Monster{ name :: String,
                         dmg :: Integer,
