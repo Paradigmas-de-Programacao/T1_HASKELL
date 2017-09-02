@@ -11,6 +11,19 @@ import Monster
 
 clear = system "clear"
 
+--Monsters Art
+file_bat_monster = "Mobs_imgs/bat.txt"
+file_diablo_monster = "Mobs_imgs/diablo.txt"
+file_minotaur_monster = "Mobs_imgs/minotaur.txt"
+file_orc_monster = "Mobs_imgs/orc.txt"
+
+renderMonster :: IO()
+renderMonster = do
+  handle <- openFile file_diablo_monster ReadMode
+  contents <- hGetContents handle
+  putStr contents
+  hClose handle
+
 --Generates de ATK type where 1 = Power atack, 2 = Technical ATK and 3 = Speed ATK
 randomATK :: IO Integer
 randomATK = do
@@ -71,11 +84,25 @@ detTypeAttackMonster op_player op_monster hp_player player hp_monster monster = 
 -- HP Player, Player, HP Monster, Monster
 fight :: Integer -> Player -> Integer -> Monster -> IO()
 fight hp_player player hp_monster monster = do
+
+  if (name monster == "Caio") then
+    renderMonster
+    else
+      putStrLn "nada"
+
   putStrLn "============================="
-  putStr "Player HP: "
-  print hp_player
-  putStr "Monster HP: "
+  putStr "Monster's Name: "
+  print (name monster)
+  putStr "Monster's HP: "
   print hp_monster
+  putStrLn "============================="
+  putStrLn "            -                "
+  putStrLn "============================="
+  putStr "Player's HP: "
+  print hp_player
+  putStr "Player's Equipment: "
+  print (equipment player)
+  putStrLn "============================="
   putStrLn "Escolha seu ataque !\n1 - Power Attack(Axe)\n2 - Technical Attack(Sword)\n3 - Speed Attack(Rapier)"
   putStrLn "============================="
   xs<-randomATK
@@ -94,7 +121,7 @@ monster_damaged m p hp = (hp + (armor m) - (damage p))
 detWinner :: Integer -> Player -> Integer -> Monster -> IO()
 detWinner hp_player player hp_monster monster = do
   if(hp_player <= 0) then
-    putStrLn "Player are death ! You Lose !"
+    putStrLn "Você Morreu !"
     else if(hp_monster <= 0) then
-      putStrLn "You Kill the Enemy ! Success !"
+      putStrLn "O inimigo foi derrotado com sucesso!"
       else fight hp_player player hp_monster monster

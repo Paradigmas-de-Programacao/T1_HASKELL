@@ -10,6 +10,7 @@ import Control.Monad
 import Monster
 
 clear = system "clear"
+
 --Monsters data
 file_mobs_name = "Mobs_Data/file_mobs_name.txt"
 file_mobs_dmg = "Mobs_Data/file_mobs_dmg.txt"
@@ -51,6 +52,7 @@ main_barb = do
 
   styles <- fmap lines(readFile file_barb_styles)
   txts <- fmap lines (readFile file_barb_txts)
+
 
   let monsters = create_monsters_list mobs_name mobs_dmg mobs_hp mobs_armor []
   let rpgMaps = buildTree (create_Rooms_list styles txts monsters [])
