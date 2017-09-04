@@ -1,4 +1,4 @@
-module Tree(Tree(Null,Node),buildTree) where
+module Tree(Tree(Null,Node),buildTree, returnRoom) where
 
 import Room
 import Monster
@@ -15,3 +15,6 @@ buildTree list = (Node (list !! half)
                  (buildTree $ take half list)
                  (buildTree $ drop (half+1) list))
                   where half = length list `quot` 2
+
+returnRoom :: Tree.Tree -> Room
+returnRoom (Node element left right) = element

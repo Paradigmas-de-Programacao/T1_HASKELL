@@ -1,6 +1,6 @@
 module Game(walk) where
 
-import Tree(Tree(Null,Node), buildTree)
+import Tree
 import System.IO
 import System.Random
 import System.Process
@@ -15,22 +15,29 @@ clear = system "clear"
 
 decision_room :: Tree.Tree -> Integer -> IO()
 decision_room (Node element Null Null) classe = do
+  clear
   putStrLn (desc element)
   putStrLn "Fim da linha."
 
 decision_room (Node element left right) classe = do
-  putStrLn (desc element)
-  putStrLn "O que deseja fazer ?"
-  path <- readLn
-  if ((path == 1) && (left /= Null)) then
-    (walk left classe)
-    else if ((path == 2) && (right /= Null)) then
-      (walk right classe)
-      else walk(Node element left right) classe
+  clear
+  if(desc (returnRoom left) == "Null") then
+    decision_room (Node element Null Null) classe
+    else do
+      putStrLn (desc element)
+      putStrLn "O que deseja fazer ?"
+      path <- readLn
+      if ((path == 1) && (left /= Null)) then
+        (walk left classe)
+        else if ((path == 2) && (right /= Null)) then
+          (walk right classe)
+          else walk(Node element left right) classe
 
 -- All battle rooms must have two fix possibilities:
 -- Victory are left Room and Loses are right Room
 fight_room (Node element left right) classe = do
+  clear
+  putStrLn (desc element)
   if(classe == 1) then
     fight (Node element left right) 500 (Player 500 150 50) (hp(monster element)) (monster element)
     else if(classe == 2) then
@@ -49,9 +56,9 @@ file_diablo_monster = "Mobs_imgs/diablo.txt"
 file_minotaur_monster = "Mobs_imgs/minotaur.txt"
 file_orc_monster = "Mobs_imgs/orc.txt"
 
-renderMonster :: IO()
-renderMonster = do
-  handle <- openFile file_diablo_monster ReadMode
+renderMonster :: String -> IO()
+renderMonster m = do
+  handle <- openFile m ReadMode
   contents <- hGetContents handle
   putStr contents
   hClose handle
@@ -117,8 +124,8 @@ detTypeAttackMonster (Node element left right) op_player op_monster hp_player pl
 fight :: Tree.Tree -> Integer -> Player -> Integer -> Monster -> IO()
 fight (Node element left right) hp_player player hp_monster monster = do
 
-  if (name monster == "Diablo") then
-    renderMonster
+  if (name monster == "Morcego") then
+    renderMonster file_bat_monster
     else
       putStrLn "nada"
 
