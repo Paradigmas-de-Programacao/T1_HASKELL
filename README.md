@@ -42,3 +42,14 @@ para isso utilize o comando: <br><br>
 
 - Utilize o comando abaixo para iniciar o jogo:<br><br>
   $ menu
+
+## Comodidades/Regras de desenvolvimento
+
+Devido ao contexto de tempo reduzido em que Haskell-RPG foi desenvolvido, alguns regras foram definidas para desenvolvimento do projeto, bem como algumas decisões foram tomadas para facilitar o trabalho dos desenvolvedores e otimizar o tempo de maneira à focar no contexto da disciplina, mas não abrindo mão de usufruir de algumas features divertidas.
+
+* Todos os arquivos .txt devem ter a mesma quantidade de linhas, referentes a quantidade de nós na árvore do jogo.
+* Todas as salas tem um atributo "style" que define que ela é uma sala de "Texto" apenas (tomada de decisão, escolhas do jogador) ou uma sala de "Batalha", quando existe uma luta. Use estes dois nomes como style da sala, somente.
+* Todas as salas tem um monstro, mesmo que não sejam uma sala de batalha. Isso facilitou a estruturação do jogo num tipo de dado fixo chamado "Room". Nas situações em que as salas serão de textos, os monstros possuem o nome "N" e tem todos os seus atributos com valor "1".
+* Devido a falta de escopo, foram desenvolvidas 3 classes que possuem atributos diferentes, mas a história do jogo é idêntica para os 3.
+* A história não está completa.
+* Todos os tipos de monstro utilizados tem uma imagem em forma de texto por padrão. Caso for utilizar um tipo de monstro diferente, aparecerá "SEM IMAGEM" na tela de jogo.
