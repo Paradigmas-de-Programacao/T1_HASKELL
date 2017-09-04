@@ -126,8 +126,13 @@ fight (Node element left right) hp_player player hp_monster monster = do
 
   if (name monster == "Morcego") then
     renderMonster file_bat_monster
-    else
-      putStrLn "nada"
+    else if(name monster == "Diablo") then
+      renderMonster file_diablo_monster
+      else if(name monster == "Minotaur") then
+        renderMonster file_minotaur_monster
+        else if(name monster == "Orc") then
+          renderMonster file_orc_monster
+          else putStrLn "SEM IMAGEM"
 
   putStrLn "============================="
   putStr "Monster's Name: "
