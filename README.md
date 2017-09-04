@@ -40,5 +40,5 @@ para isso utilize o comando: <br><br>
 - Após isso é necessário que vocẽ clone o repositório, entre no diretório T1_Haskell e execute o seguinte comando: <br><br>
   $ ghci Main.hs
 
-- Utilize o camando abaixo para iniciar o jogo:<br><br>
+- Utilize o comando abaixo para iniciar o jogo:<br><br>
   $ menu
