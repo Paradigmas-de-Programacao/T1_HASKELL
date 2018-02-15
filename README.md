@@ -35,9 +35,9 @@ presentes nesse mapa. As salas descritas abaixo ou acima da sala principal corre
 - Para a utilização da aplicação é necessário
 primeiramente que você possua as dependências do ghci instaladas,
 para isso utilize o comando: <br><br>
-  $ sudo apt-get install haskell-platform
-  $ sudo apt-get install cabal
-  $ cabal update
+  $ sudo apt-get install haskell-platform  
+  $ sudo apt-get install cabal  
+  $ cabal update  
 
 - Após isso é necessário que vocẽ clone o repositório, entre no diretório T1_Haskell e execute o seguinte comando: <br><br>
   $ ghci Main.hs
