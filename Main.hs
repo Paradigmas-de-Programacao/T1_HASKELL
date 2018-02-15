@@ -1,5 +1,5 @@
-import qualified Data.Text as Text
-import qualified Data.Text.IO as Text
+--import qualified Data.Text as Text
+--import qualified Data.Text.IO as Text
 import Tree(Tree(Null,Node), buildTree)
 import Game
 import Room
